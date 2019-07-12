@@ -1,0 +1,16 @@
+version: '3'
+services:
+  travala-socket-server:
+    restart: always
+    container_name: travala-socket-server
+    hostname: travala-socket-server
+    image: hoak57uet/tomcat-pip
+    volumes:
+      - ./socket-server.war:/usr/local/tomcat/webapps/socket.war
+      - ./logs/socket.log:/var/logs/socket.log
+      - /home/ubuntu/import/:/home/ubuntu/import/
+      - ./log/full/:/usr/local/tomcat/webapps/log/full/
+networks:
+  default:
+    external:
+      name: "net-travala"
